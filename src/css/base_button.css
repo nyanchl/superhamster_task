@@ -1,0 +1,17 @@
+.first-button {
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.second-button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.third-button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
