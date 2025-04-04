@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {NormalButton, RightIconButton, LeftIconButton} from './buttons';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Buttons } from "./buttons";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <NormalButton />
-    <RightIconButton />
-    <LeftIconButton />
+    <Buttons />
   </React.StrictMode>
 );
