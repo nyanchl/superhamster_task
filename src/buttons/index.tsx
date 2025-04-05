@@ -33,6 +33,7 @@ function Buttons() {
         handleClick={handleClick}
         url="https://www.google.com"
         icon={icon}
+        iconPosition="left"
       />
       <BaseButton
         text="編集"
@@ -42,6 +43,7 @@ function Buttons() {
         isLoading={isLoading}
         handleClick={handleClick}
         icon={icon}
+        iconPosition="right"
       />
     </div>
   );

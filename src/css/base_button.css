@@ -1,22 +1,57 @@
 .first-button {
+  color: white;
   background-color: black;
   border: none;
   border-radius: 5px;
 }
 
+.first-button:hover {
+  background-color: #333;
+}
+
+.first-button:focus {
+  outline: 2px solid blue;
+}
+
 .second-button {
+  color: black;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
 }
 
+.second-button:hover {
+  background-color: #f0f0f0;
+}
+
+.second-button:focus {
+  outline: 2px solid blue;
+}
+
 .third-button {
+  color: black;
   background-color: white;
   border: none;
   border-radius: 5px;
 }
 
-.icon-size {
+.third-button:hover {
+  background-color: #f0f0f0;
+}
+
+.third-button:focus {
+  outline: 2px solid blue;
+}
+
+.icon {
   width: 20px;
   height: 20px;
 }
+
+/* .button-icon.left {
+  margin-right: 8px;
+}
+
+.button-icon.right {
+  margin-left: 8px;
+} */

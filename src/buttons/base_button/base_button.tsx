@@ -1,5 +1,7 @@
 import "../../css/base_button.css";
 
+type IconPositionType = "left" | "right";
+
 type ButtonType = "button" | "submit" | "reset";
 
 type TargetAttributeType = "_blank" | "_self" | "_parent" | "_top";
@@ -10,12 +12,13 @@ type BaseButtonType = {
   heightValue: number;
   isDisabled: boolean;
   isLoading: boolean;
+  onClick?: () => void;
   handleClick?: () => void;
   url?: string;
   icon?: string;
+  iconPosition?: IconPositionType;
   type?: ButtonType;
   target?: TargetAttributeType;
-  onClick?: () => void;
 };
 
 function BaseButton({
@@ -27,92 +30,59 @@ function BaseButton({
   handleClick,
   url,
   icon,
+  iconPosition,
   type,
   target,
 }: BaseButtonType) {
+  const buttonStyle = {
+    width: widthValue,
+    height: heightValue,
+  };
+
+  const buttonElement = (className: string) => (
+    <button
+      className={className}
+      disabled={isLoading || isDisabled}
+      type={type}
+      style={buttonStyle}
+      onClick={handleClick}
+    >
+      {isLoading ? (
+        "loading..."
+      ) : (
+        <>
+          {icon && iconPosition === "left" && (
+            <img src={icon} alt="icon" className="icon left" />
+          )}
+          <span>{text}</span>
+          {icon && iconPosition === "right" && (
+            <img src={icon} alt="icon" className="icon right" />
+          )}
+        </>
+      )}
+    </button>
+  );
+
+  const urlElement = (className: string) => (
+    <a href={url} target={target}>
+      {buttonElement(className)}
+    </a>
+  );
+
   if (url) {
     return (
       <div>
-        <p>
-          <a href={url} target={target}>
-            <button
-              className="first-button"
-              onClick={handleClick}
-              disabled={isLoading || isDisabled}
-              type={type}
-              style={{ color: "white", width: widthValue, height: heightValue }}
-            >
-              {isLoading ? "loading..." : text}
-            </button>
-          </a>
-        </p>
-        <p>
-          <a href={url} target={target}>
-            <button
-              className="second-button"
-              onClick={handleClick}
-              disabled={isLoading || isDisabled}
-              type={type}
-              style={{ color: "black", width: widthValue, height: heightValue }}
-            >
-              {isLoading ? "loading..." : text}
-            </button>
-          </a>
-        </p>
-        <p>
-          <a href={url} target={target}>
-            <button
-              className="third-button"
-              onClick={handleClick}
-              disabled={isLoading || isDisabled}
-              type={type}
-              style={{ color: "black", width: widthValue, height: heightValue }}
-            >
-              {isLoading ? "loading..." : text}
-            </button>
-          </a>
-        </p>
+        <p>{urlElement("first-button")}</p>
+        <p>{urlElement("second-button")}</p>
+        <p>{urlElement("third-button")}</p>
       </div>
     );
   } else {
     return (
       <div>
-        <p>
-          <button
-            className="first-button"
-            onClick={handleClick}
-            disabled={isLoading || isDisabled}
-            type={type}
-            style={{ color: "white", width: widthValue, height: heightValue }}
-          >
-            {icon && <img className="icon-size" src={icon} alt="" />}
-            {isLoading ? "loading..." : text}
-          </button>
-        </p>
-        <p>
-          <button
-            className="second-button"
-            onClick={handleClick}
-            disabled={isLoading || isDisabled}
-            type={type}
-            style={{ color: "black", width: widthValue, height: heightValue }}
-          >
-            {icon && <img className="icon-size" src={icon} alt="" />}
-            {isLoading ? "loading..." : text}
-          </button>
-        </p>
-        <p>
-          <button
-            className="third-button"
-            onClick={handleClick}
-            disabled={isLoading || isDisabled}
-            type={type}
-            style={{ color: "black", width: widthValue, height: heightValue }}
-          >
-            {icon && <img className="icon-size" src={icon} alt="" />}
-            {isLoading ? "loading..." : text}
-          </button>
-        </p>
+        <p>{buttonElement("first-button")}</p>
+        <p>{buttonElement("second-button")}</p>
+        <p>{buttonElement("third-button")}</p>
       </div>
     );
   }
