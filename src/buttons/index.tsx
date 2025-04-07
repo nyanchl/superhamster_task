@@ -23,15 +23,18 @@ function Buttons() {
     handleClick,
   };
   return (
-    <div>
+    <div className="outter-container">
       <BaseButton {...buttonElementProps} />
       <BaseButton
         {...buttonElementProps}
         url="https://www.google.com"
+        icon={true}
+        iconPosition="left"
       />
-      <BaseButton {...buttonElementProps} />
+      <BaseButton {...buttonElementProps} icon={true} iconPosition="right" />
     </div>
   );
 }
 
 export { Buttons };
+

@@ -1,3 +1,5 @@
+type IconPositionType = "left" | "right";
+
 type ButtonType = "button" | "submit" | "reset";
 
 type TargetAttributeType = "_blank" | "_self" | "_parent" | "_top";
@@ -11,6 +13,8 @@ type BaseButtonType = {
   onClick?: () => void;
   handleClick?: () => void;
   url?: string;
+  icon?: boolean;
+  iconPosition?: IconPositionType;
   type?: ButtonType;
   target?: TargetAttributeType;
 };
@@ -23,6 +27,8 @@ function BaseButton({
   isLoading,
   handleClick,
   url,
+  icon,
+  iconPosition = "left",
   type,
   target,
 }: BaseButtonType) {
@@ -32,8 +38,9 @@ function BaseButton({
     height: heightValue,
   };
   // ボタンの要素
-  const buttonElement = (
+  const buttonElement = (className: string) => (
     <button
+      className={className}
       disabled={isLoading || isDisabled}
       type={type}
       style={buttonStyle}
@@ -42,23 +49,33 @@ function BaseButton({
         if (url) window.open(url, target);
       }}
     >
-      <span>{text}</span>
+      {icon === true && iconPosition === "left" && (
+        <span className="button-icon-left">
+          <i className="fa-solid fa-pencil"></i>
+        </span>
+      )}
+      <span className="button-text">{text}</span>
+      {icon === true && iconPosition === "right" && (
+        <span className="button-icon-right">
+          <i className="fa-solid fa-pencil"></i>
+        </span>
+      )}
     </button>
   );
 
   return (
-    <div>
+    <div className="button-group">
       {url ? (
         <>
-          <section>{buttonElement}</section>
-          <section>{buttonElement}</section>
-          <section>{buttonElement}</section>
+          <section>{buttonElement("first-button")}</section>
+          <section>{buttonElement("second-button")}</section>
+          <section>{buttonElement("third-button")}</section>
         </>
       ) : (
         <>
-          <section>{buttonElement}</section>
-          <section>{buttonElement}</section>
-          <section>{buttonElement}</section>
+          <section>{buttonElement("first-button")}</section>
+          <section>{buttonElement("second-button")}</section>
+          <section>{buttonElement("third-button")}</section>
         </>
       )}
     </div>
@@ -66,3 +83,4 @@ function BaseButton({
 }
 
 export default BaseButton;
+
