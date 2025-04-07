@@ -1,3 +1,5 @@
+import "../../css/base_button.css";
+
 type IconPositionType = "left" | "right";
 
 type ButtonType = "button" | "submit" | "reset";
@@ -83,4 +85,3 @@ function BaseButton({
 }
 
 export default BaseButton;
-

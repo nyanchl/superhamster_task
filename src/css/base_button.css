@@ -1,0 +1,73 @@
+.outter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.first-button,
+.second-button,
+.third-button {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .first-button,
+  .second-button,
+  .third-button {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 5px;
+  }
+}
+
+.first-button {
+  border: none;
+  color: white;
+  background-color: black;
+}
+
+.second-button {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+}
+
+.third-button {
+  border: none;
+  color: black;
+  background-color: white;
+}
+
+.first-button:hover {
+  background-color: #333;
+}
+
+.second-button:hover,
+.third-button:hover {
+  background-color: #f0f0f0;
+}
+
+.first-button:focus,
+.second-button:focus,
+.third-button:focus {
+  outline: 2px solid blue;
+}
+
+.button-icon-left {
+  margin-right: 5px;
+}
+
+.button-icon-right {
+  margin-left: 5px;
+}

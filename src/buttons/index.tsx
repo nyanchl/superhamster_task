@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import "../css/base_button.css";
 import BaseButton from "./base_button/base_button";
 
 function Buttons() {
@@ -37,4 +38,3 @@ function Buttons() {
 }
 
 export { Buttons };
-
